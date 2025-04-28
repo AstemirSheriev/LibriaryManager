@@ -20,7 +20,7 @@ public class PersonDAO {
 
 
     public List<Person> getPeople() {
-        return jdbcTemplate.query("SELECT * FROM Person", new BeanPropertyRowMapper<>(Person.class));
+        return jdbcTemplate.query("SELECT * FROM Person order by id", new BeanPropertyRowMapper<>(Person.class));
     }
 
     public Person getPerson(int id) {
@@ -28,4 +28,12 @@ public class PersonDAO {
                 stream().filter( person -> person.getId() == id).findFirst().orElse(null);
     }
 
+    public void addPerson(Person person) {
+        jdbcTemplate.update("INSERT INTO PERSON (name, surname, birthdate) values (?, ?, ?)", person.getName(), person.getSurname(), person.getBirthdate());
+    }
+
+    public void edit(Person person, int id) {
+        jdbcTemplate.update("Update Person set name=?, surname=?, birthdate=? where id=?",
+                person.getName(), person.getSurname(), person.getBirthdate(), id);
+    }
 }
