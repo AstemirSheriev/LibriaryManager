@@ -1,0 +1,31 @@
+package org.example.sheriev.DAO;
+
+import org.example.sheriev.models.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class PersonDAO {
+
+    private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public PersonDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+
+    public List<Person> getPeople() {
+        return jdbcTemplate.query("SELECT * FROM Person", new BeanPropertyRowMapper<>(Person.class));
+    }
+
+    public Person getPerson(int id) {
+        return jdbcTemplate.query("Select * from Person where id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class)).
+                stream().filter( person -> person.getId() == id).findFirst().orElse(null);
+    }
+
+}
