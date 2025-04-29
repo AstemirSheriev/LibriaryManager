@@ -1,5 +1,6 @@
 package org.example.sheriev.DAO;
 
+import org.example.sheriev.models.Book;
 import org.example.sheriev.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -7,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -45,5 +47,9 @@ public class PersonDAO {
                 stream().
                 findFirst().
                 orElse(null);
+    }
+
+    public List<Book> checkBooks(int id) {
+        return jdbcTemplate.query("Select Book.* from Person join Book on book.person_id=person.id where person.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Book.class));
     }
 }

@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <title>Person</title>
 </head>
+
 <body>
 <p th:text="${person.getName() + ' ' + person.getSurname()}"></p>
+<hr>
+<div th:if="${noBooks}">
+    <span>The person doesn't have any books</span>
+</div>
+
+<div th:if="${books}">
+    <p><strong>Books:</strong></p>
+    <div th:each="book : ${books}">
+        <p th:text="${book.getFullName()}">
+        </p>
+    </div>
+    <hr>
+</div>
 <br>
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}"
    th:text="'Edit person!'">

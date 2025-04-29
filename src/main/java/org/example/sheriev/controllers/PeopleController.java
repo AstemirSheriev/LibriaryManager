@@ -1,6 +1,7 @@
 package org.example.sheriev.controllers;
 
 import org.example.sheriev.DAO.PersonDAO;
+import org.example.sheriev.models.Book;
 import org.example.sheriev.models.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/people")
@@ -28,8 +31,12 @@ public class PeopleController {
     @GetMapping("{id}")
     public String showPerson(@PathVariable("id") int id,
                              Model model) {
+        List<Book> bookList = personDAO.checkBooks(id);
+        System.out.println(bookList.isEmpty());
+        if (bookList.isEmpty())
+            model.addAttribute("noBooks", 1);
+        else model.addAttribute("books", bookList);
         model.addAttribute("person", personDAO.getPerson(id));
-        //model.addAttribute("hasBook", personDAO.checkBooks(id));
         return "people/person";
     }
 
@@ -39,7 +46,7 @@ public class PeopleController {
     }
 
     @PostMapping()
-    public String newPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+    public String newPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
         personDAO.addPerson(person);
         return "redirect:/people";
     }
@@ -53,7 +60,7 @@ public class PeopleController {
 
     @PatchMapping("/{id}")
     public String editPerson(@PathVariable("id") int id,
-                             @ModelAttribute("person") Person person){
+                             @ModelAttribute("person") Person person) {
         personDAO.edit(person, id);
         return "redirect:/people";
     }

@@ -7,6 +7,9 @@ public class Book {
     private String author;
     private int year;
 
+    public String getFullName() {
+        return name + ", " + author + ", " + year;
+    }
     public int getBookId() {
         return bookId;
     }
