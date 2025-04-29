@@ -10,8 +10,6 @@ This web application was developed for a local library to digitize the tracking 
 - View lists of all books and all readers
 - See which books are assigned to which readers
 
-The project fully meets the technical specification&#8203;:contentReference[oaicite:0]{index=0}that was provided.
-
 ---
 
 ## 🛠️ Technologies Used
