@@ -70,7 +70,7 @@ Additional:
 
 ## 📂 How to Run the Project
 
-1. **Create the database:**
+**Create the database:**
 
 ```sql
 CREATE DATABASE project1;
@@ -88,3 +88,34 @@ CREATE TABLE Book (
     year INT,
     person_id INT REFERENCES Person(id) ON DELETE SET NULL
 );
+
+---
+
+## ⚙️ Configure Database Connection
+
+**In `SpringConfig.java`:**
+
+- **URL:** `jdbc:postgresql://localhost:5432/project1`  
+- **Username / Password:** `postgres / postgres`  
+- **Driver:** `org.postgresql.Driver`
+
+---
+
+## 🚀 Start the Application
+
+1. **Import the project** into your IDE (e.g., IntelliJ IDEA)
+2. **Build the project** using Maven
+3. **Deploy** it to an Apache Tomcat server
+4. Open a browser and go to:  
+   👉 `http://localhost:8080/`
+
+---
+
+## ⚡ Notes
+
+- The project can be improved by integrating **Spring Data JPA** instead of plain JDBC.
+- For more powerful validation, consider using **Hibernate Validator**.
+- The application uses a **multi-page architecture** with dynamic UI generation via **Thymeleaf**.
+
+---
+
