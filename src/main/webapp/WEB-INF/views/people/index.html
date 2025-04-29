@@ -11,6 +11,8 @@
 </div>
 <br>
 <hr>
-<a href="/people/new">Add new Person.</a>
+<form th:method="GET" th:action="@{/people/new}">
+    <input type="submit" value="Add new Person.">
+</form>
 </body>
 </html>

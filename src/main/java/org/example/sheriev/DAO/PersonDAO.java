@@ -52,4 +52,8 @@ public class PersonDAO {
     public List<Book> checkBooks(int id) {
         return jdbcTemplate.query("Select Book.* from Person join Book on book.person_id=person.id where person.id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Book.class));
     }
+
+    public void deletePerson(int id) {
+        jdbcTemplate.update("DELETE FROM PERSON WHERE id = ?", id);
+    }
 }
