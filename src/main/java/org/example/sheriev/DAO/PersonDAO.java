@@ -25,7 +25,10 @@ public class PersonDAO {
 
     public Person getPerson(int id) {
         return jdbcTemplate.query("Select * from Person where id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class)).
-                stream().filter( person -> person.getId() == id).findFirst().orElse(null);
+                stream().
+                filter( person -> person.getId() == id).
+                findFirst().
+                orElse(null);
     }
 
     public void addPerson(Person person) {
@@ -35,5 +38,12 @@ public class PersonDAO {
     public void edit(Person person, int id) {
         jdbcTemplate.update("Update Person set name=?, surname=?, birthdate=? where id=?",
                 person.getName(), person.getSurname(), person.getBirthdate(), id);
+    }
+
+    public Person getNameByBook(int id) {
+        return jdbcTemplate.query("Select p.id, p.name, p.surname, p.birthdate from Book b join Person p on b.person_id=p.id where b.book_id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class)).
+                stream().
+                findFirst().
+                orElse(null);
     }
 }

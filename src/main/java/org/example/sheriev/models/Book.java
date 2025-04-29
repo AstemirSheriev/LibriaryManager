@@ -1,26 +1,26 @@
 package org.example.sheriev.models;
 
 public class Book {
-    private int book_id;
-    private int person_id;
+    private Integer bookId;
+    private Integer personId;
     private String name;
     private String author;
     private int year;
 
-    public int getBook_id() {
-        return book_id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setPerson_id(int person_id) {
-        this.person_id = person_id;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
     public String getName() {
@@ -47,9 +47,9 @@ public class Book {
         this.year = year;
     }
 
-    public Book(int book_id, int person_id, String name, String author, int year) {
-        this.book_id = book_id;
-        this.person_id = person_id;
+    public Book(int bookId, int personId, String name, String author, int year) {
+        this.bookId = bookId;
+        this.personId = personId;
         this.name = name;
         this.author = author;
         this.year = year;

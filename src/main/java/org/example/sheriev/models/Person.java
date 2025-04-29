@@ -1,11 +1,14 @@
 package org.example.sheriev.models;
 
 public class Person {
-    private int id;
+    private Integer id;
     private String name;
     private String surname;
     private int birthdate;
 
+    public String getFullName(){
+        return surname + " " + name;
+    }
 
     public int getId() {
         return id;
