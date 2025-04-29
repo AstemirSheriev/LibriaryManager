@@ -88,7 +88,7 @@ CREATE TABLE Book (
     year INT,
     person_id INT REFERENCES Person(id) ON DELETE SET NULL
 );
-
+``` 
 ---
 
 ## ⚙️ Configure Database Connection
