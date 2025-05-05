@@ -16,7 +16,7 @@ This web application was developed for a local library to digitize the tracking 
 
 | Technology | Purpose |
 |:-----------|:--------|
-| **Java 11+** | Main programming language |
+| **Java 17+** | Main programming language |
 | **Spring MVC** | Building the web application following the MVC pattern |
 | **Spring JDBC (JdbcTemplate)** | Database interaction |
 | **Thymeleaf** | Template engine for creating HTML pages |
