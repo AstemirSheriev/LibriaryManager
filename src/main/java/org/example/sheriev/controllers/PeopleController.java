@@ -47,6 +47,8 @@ public class PeopleController {
 
     @PostMapping()
     public String newPerson(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "/people/new";
         personDAO.addPerson(person);
         return "redirect:/people";
     }

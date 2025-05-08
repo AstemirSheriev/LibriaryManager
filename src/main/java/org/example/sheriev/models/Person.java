@@ -1,9 +1,19 @@
 package org.example.sheriev.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Person {
     private Integer id;
+    @NotEmpty(message = "Name cannot be empty")
     private String name;
+    @NotEmpty(message = "Surname cannot be empty")
     private String surname;
+    @NotNull
+    @Min(value = 1920, message = "Choose between 1920 and 2025")
+    @Max(value = 2025, message = "Choose between 1920 and 2025")
     private int birthdate;
 
     public String getFullName(){
