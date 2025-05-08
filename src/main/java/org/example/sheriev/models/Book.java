@@ -1,10 +1,17 @@
 package org.example.sheriev.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Book {
     private Integer bookId;
     private Integer personId;
+    @NotEmpty(message = "Please enter the name of the book")
     private String name;
+    @NotEmpty(message = "Please enter the author name")
     private String author;
+    @Max(value = 2025, message = "Please, enter the right year")
     private int year;
 
     public String getFullName() {
